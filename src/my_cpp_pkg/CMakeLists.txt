@@ -11,9 +11,9 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 # 添加这 4 行
-add_executable(chao_node src/chao_node.cpp)
-ament_target_dependencies(chao_node rclcpp)
-install(TARGETS chao_node DESTINATION lib/${PROJECT_NAME})
+add_executable(wang2_node src/chao_node.cpp)
+ament_target_dependencies(wang2_node rclcpp)
+install(TARGETS wang2_node DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

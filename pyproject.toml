@@ -1,0 +1,5 @@
+[tool.ruff]
+line-length = 150
+
+[tool.ruff.format]
+quote-style = "single"  # 保留你的单引号习惯
