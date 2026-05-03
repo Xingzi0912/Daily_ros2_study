@@ -1,6 +1,8 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, UInt32
+from interface.msg import Novel
+
 
 # 编写ros2节点的一般步骤：
 # 1. 导入rclpy库和Node类。
