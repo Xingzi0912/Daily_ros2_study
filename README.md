@@ -29,3 +29,4 @@ Commit ros2 project in this repository
         cd ~/ros2_ws
         colcon build --packages-select interface
         source install/setup.bash
+## 5月4日 今天学习强化学习，明天继续ros
