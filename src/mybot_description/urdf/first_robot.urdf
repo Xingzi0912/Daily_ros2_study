@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot name="first_robot">
+    <!--机器人身体-->
+    <link name="base_link">
+        <visual>
+            <!--沿自己几何中心偏移量-->
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <!--几何形状-->
+            <geometry>
+                <cylinder radius="0.10" length="0.12"/>
+            </geometry>
+            <!--材质和颜色-->
+            <material name="white">
+                <color rgba="1 1 1 0.5"/>
+            </material>
+        </visual>
+    </link>
+
+    <!--机器人imu-->
+    <link name="imu_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.02 0.02 0.02"/>
+            </geometry>
+            <material name="red">
+                <color rgba="1 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <!--机器人关节-->
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+        <origin xyz="0 0 0.03" rpy="0 0 0"/>
+    </joint>
+
+</robot>

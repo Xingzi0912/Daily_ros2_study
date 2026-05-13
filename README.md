@@ -31,3 +31,5 @@ Commit ros2 project in this repository
         source install/setup.bash
 ## 5月4日 今天学习强化学习，明天继续ros
 ## 5月5日 学习服务
+## 5月12日 今天主要学习使用numpy来表示位姿信息，并进行位姿变换
+## 5月13日 仿真第一步，使用urdf新建一个模型用于后续仿真
