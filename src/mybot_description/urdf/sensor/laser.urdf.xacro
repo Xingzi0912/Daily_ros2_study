@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="laser_xacro" params="joint_xyz">
+        <!-- 激光雷达支撑杆 -->
+        <link name="laser_support_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder radius="0.01" length="0.1"/>
+                </geometry>
+                <material name="black">
+                    <color rgba="0 0 0 1"/>
+                </material>
+            </visual>
+        </link>
+
+        <!-- 支撑杆与 base_link 的关节 -->
+        <joint name="laser_support_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="laser_support_link"/>
+            <origin xyz="${joint_xyz}" rpy="0 0 0"/>
+        </joint>
+
+        <!-- 激光雷达本体 -->
+        <link name="laser_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.02 0.02 0.02"/>
+                </geometry>
+                <material name="red">
+                    <color rgba="1 0 0 1"/>
+                </material>
+            </visual>
+        </link>
+
+        <!-- 雷达与支撑杆的关节 -->
+        <joint name="laser_joint" type="fixed">
+            <parent link="laser_support_link"/>
+            <child link="laser_link"/>
+            <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        </joint>
+    </xacro:macro>
+
+</robot>
