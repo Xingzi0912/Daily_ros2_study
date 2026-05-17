@@ -5,20 +5,28 @@
   <xacro:include filename="$(find mybot_description)/urdf/first_robot_gripper.xacro"/> -->
 
     <xacro:macro name="base_xacro" params="length radius">
-            <!--机器人身体-->
+        <!--机器人底盘-->
         <link name="base_link">
+            <inertial>
+                <mass value="2.0"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+            </inertial>
             <visual>
-                <!--沿自己几何中心偏移量-->
-                <origin xyz="0 0 0.0" rpy="0 0 0"/>
-                <!--几何形状-->
+                <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
                     <cylinder radius="${radius}" length="${length}"/>
                 </geometry>
-                <!--材质和颜色-->
-                <material name="white">
-                    <color rgba="1 1 1 0.5"/>
+                <material name="blue">
+                    <color rgba="0 0 0 0.5"/>
                 </material>
             </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+            </collision>
         </link>
     </xacro:macro>
 
