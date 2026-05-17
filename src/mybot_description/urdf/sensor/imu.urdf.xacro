@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- <xacro:include filename="$(find mybot_description)/urdf/first_robot_base.xacro"/>
+  <xacro:include filename="$(find mybot_description)/urdf/first_robot_arm.xacro"/>
+  <xacro:include filename="$(find mybot_description)/urdf/first_robot_gripper.xacro"/> -->
+
+
+    <xacro:macro name="imu_xacro" params = "joint_xyz link_xyz">
+        <link name="${imu_name}_link">
+            <visual>
+                <origin xyz="${link_xyz}" rpy="0 0 0"/>
+                <geometry>
+                    <box size="0.02 0.02 0.02"/>
+                </geometry>
+                <material name="red">
+                    <color rgba="1 0 0 1"/>
+                </material>
+            </visual>
+        </link>
+
+        <joint name="imu_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="${imu_name}_link"/>
+            <origin xyz="${joint_xyz}" rpy="0 0 0"/>
+        </joint>
+    </xacro:macro>
+
+</robot>

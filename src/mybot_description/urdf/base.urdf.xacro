@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- <xacro:include filename="$(find mybot_description)/urdf/first_robot_base.xacro"/>
+  <xacro:include filename="$(find mybot_description)/urdf/first_robot_arm.xacro"/>
+  <xacro:include filename="$(find mybot_description)/urdf/first_robot_gripper.xacro"/> -->
+
+    <xacro:macro name="base_xacro" params="length radius">
+            <!--机器人身体-->
+        <link name="base_link">
+            <visual>
+                <!--沿自己几何中心偏移量-->
+                <origin xyz="0 0 0.0" rpy="0 0 0"/>
+                <!--几何形状-->
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+                <!--材质和颜色-->
+                <material name="white">
+                    <color rgba="1 1 1 0.5"/>
+                </material>
+            </visual>
+        </link>
+    </xacro:macro>
+
+</robot>
