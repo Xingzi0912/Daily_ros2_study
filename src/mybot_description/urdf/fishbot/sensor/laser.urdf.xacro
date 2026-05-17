@@ -13,6 +13,11 @@
                     <color rgba="0 0 0 1"/>
                 </material>
             </visual>
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.05"/>
+                <inertia ixx="4.58e-5" ixy="0" ixz="0" iyy="4.58e-5" iyz="0" izz="2.5e-6"/>
+            </inertial>
         </link>
 
         <!-- 支撑杆与 base_link 的关节 -->
@@ -33,6 +38,11 @@
                     <color rgba="1 0 0 1"/>
                 </material>
             </visual>
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="0.01"/>
+                <inertia ixx="3.33e-6" ixy="0" ixz="0" iyy="3.33e-6" iyz="0" izz="3.33e-6"/>
+            </inertial>
         </link>
 
         <!-- 雷达与支撑杆的关节 -->
