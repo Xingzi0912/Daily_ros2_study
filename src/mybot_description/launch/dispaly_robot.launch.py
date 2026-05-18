@@ -8,7 +8,8 @@ def generate_launch_description():
     xacro_file_path = os.path.join(
         get_package_share_directory('mybot_description'), 
         'urdf', 
-        'first_robot.xacro'
+        'fishbot',
+        'fishbot.urdf.xacro'
     )
     
     default_rviz_config_path = os.path.join(

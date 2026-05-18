@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="caster_xacro" params="caster_name xyz">
+    <!-- 万向轮关节 -->
+    <joint name="${caster_name}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${caster_name}_link"/>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- 万向轮连杆 -->
+    <link name="${caster_name}_link">
+      <inertial>
+        <mass value="0.05"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.00005" ixy="0.0" ixz="0.0" iyy="0.00005" iyz="0.0" izz="0.00005"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.032"/>
+        </geometry>
+        <material name="black">
+          <color rgba="0 0 0 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.032"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+
+</robot>

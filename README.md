@@ -41,12 +41,16 @@ ros2_ws/
 | `urdf/fishbot/base.urdf.xacro` | FishBot 底盘 |
 | `urdf/fishbot/sensor/imu.urdf.xacro` | IMU 传感器宏 |
 | `urdf/fishbot/sensor/camera.urdf.xacro` | 摄像头传感器宏 |
-| `urdf/fishbot/sensor/laser.urdf.xacro` | 激光雷达传感器宏（含支撑杆） |
+| `urdf/fishbot/sensor/laser.urdf.xacro` | 激光雷达传感器宏（含支撑杆、碰撞检测） |
+| `urdf/fishbot/actuator/wheel.xacro` | 驱动轮宏（圆柱形，半径 0.032m，长度 4cm） |
+| `urdf/fishbot/actuator/caster.xacro` | 万向轮宏（球形，半径 0.032m） |
 
 #### FishBot 模型特点
 
 - **模块化设计**：传感器通过 Xacro 宏独立定义，主模型统一调用
 - **支撑杆结构**：激光雷达通过 `laser_support_link` 支撑杆固定，支撑杆位置由参数决定
+- **执行器模块**：驱动轮（`wheel_xacro`）和万向轮（`caster_xacro`）独立封装，支持差速驱动
+- **碰撞检测**：所有 link 均包含 `<collision>` 标签，兼容 Gazebo 物理仿真
 - **惯性参数**：所有 link 均包含 `<inertial>` 标签，兼容 Gazebo 仿真
 
 #### 启动文件
@@ -54,6 +58,9 @@ ros2_ws/
 ```bash
 # 显示机器人模型（RViz）
 ros2 launch mybot_description dispaly_robot.launch.py
+
+# 启动 Gazebo 仿真（自动加载 FishBot）
+ros2 launch mybot_description gazebo_sim.launch.py
 ```
 
 ### 3. `my_cpp_pkg` — C++ 节点示例
@@ -147,6 +154,7 @@ ros2 run my_py_pkg li4
 | 5月3日-5日 | ROS2 基础节点、话题通信 |
 | 5月13日 | 自定义消息接口 |
 | 5月17日 | URDF/Xacro 建模、FishBot 传感器模块化设计 |
+| 5月18日 | 执行器建模（驱动轮/万向轮 Xacro 宏）、碰撞标签、Gazebo 仿真启动文件 |
 
 ---
 
