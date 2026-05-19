@@ -26,6 +26,10 @@
             </inertial>
         </link>
 
+        <gazebo reference="laser_support_link">
+            <material>Gazebo/Black</material>
+        </gazebo>
+
         <!-- 支撑杆与 base_link 的关节 -->
         <joint name="laser_support_joint" type="fixed">
             <parent link="base_link"/>
@@ -56,6 +60,10 @@
                 <inertia ixx="3.33e-6" ixy="0" ixz="0" iyy="3.33e-6" iyz="0" izz="3.33e-6"/>
             </inertial>
         </link>
+
+        <gazebo reference="laser_link">
+            <material>Gazebo/Red</material>
+        </gazebo>
 
         <!-- 雷达与支撑杆的关节 -->
         <joint name="laser_joint" type="fixed">

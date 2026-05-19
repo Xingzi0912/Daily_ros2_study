@@ -23,6 +23,10 @@
             </inertial>
         </link>
 
+        <gazebo reference="imu_link">
+            <material>Gazebo/Red</material>
+        </gazebo>
+
         <joint name="imu_joint" type="fixed">
             <parent link="base_link"/>
             <child link="imu_link"/>

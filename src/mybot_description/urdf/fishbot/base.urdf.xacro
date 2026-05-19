@@ -29,6 +29,10 @@
             </collision>
         </link>
 
+        <gazebo reference="base_link">
+            <material>Gazebo/Blue</material>
+        </gazebo>
+
         <link name="base_footprint_link">
         </link>
 

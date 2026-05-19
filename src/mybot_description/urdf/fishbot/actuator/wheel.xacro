@@ -33,6 +33,19 @@
         </geometry>
       </collision>
     </link>
+
+    <gazebo reference="${wheel_name}_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- 轮子物理属性 -->
+    <gazebo reference="${wheel_name}_link">
+      <mu>20.0</mu>
+      <mu2>20.0</mu2>
+      <kp>1000000.0</kp>
+      <kd>1.0</kd>
+    </gazebo>
+
   </xacro:macro>
 
 </robot>
