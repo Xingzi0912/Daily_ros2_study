@@ -13,7 +13,7 @@ def generate_launch_description():
 
     # xacro 文件路径
     xacro_file_path = os.path.join(pkg_share, 'urdf', 'fishbot', 'fishbot.urdf.xacro')
-    gazebo_world_path = os.path.join(pkg_share, 'world', 'fish_world', 'fish_world_2.world')
+    gazebo_world_path = os.path.join(pkg_share, 'world', 'fish_world', 'fish_world_3.world')
 
     # 使用 xacro 生成 URDF
     doc = xacro.process_file(xacro_file_path)
@@ -55,11 +55,44 @@ def generate_launch_description():
         arguments=['-file', temp_urdf_file, '-entity', 'fishbot', '-x', '0.0', '-y', '0.0', '-z', '0.1', '-package_to_model'],
     )
 
+    # 加载并激活 joint_state_broadcaster 控制器
+    # ros2 control load_controller joint_state_broadcaster --set-state active
+    action_load_joint_state_broadcaster = launch.actions.ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', 'joint_state_broadcaster', '--set-state', 'active'],
+        output='screen',
+    )
+
+    # #激活fishbot_ros2_control系统控制器
+    # action_load_fishbot_effort_controller = launch.actions.ExecuteProcess(
+    #     cmd=['ros2', 'control', 'load_controller', 'fishbot_effort_controller', '--set-state', 'active'],
+    #     output='screen',
+    # )
+
+    #激活diff_drive_controller系统控制器
+    action_load_diff_drive_controller = launch.actions.ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', 'fishbot_diff_drive_controller', '--set-state', 'active'],
+        output='screen',
+    )   
+
+
+
     return launch.LaunchDescription(
         [
             actions_declare_arg_model,
             robot_state_publisher_node,
             gazebo_launch,
             spawn_entity_node,
+            launch.actions.RegisterEventHandler(
+                event_handler=launch.event_handlers.OnProcessExit(
+                    target_action=spawn_entity_node,
+                    on_exit=[action_load_joint_state_broadcaster],
+                )
+            ),
+            launch.actions.RegisterEventHandler(
+                event_handler=launch.event_handlers.OnProcessExit(
+                    target_action=action_load_joint_state_broadcaster,
+                    on_exit=[action_load_diff_drive_controller],
+                )
+            ),
         ]
     )
